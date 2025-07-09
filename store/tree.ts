@@ -33,7 +33,6 @@ const store = createStore<State>({
       saveState(state);
     },
     setHighlightedNode(state: State, id: string) {
-      console.log('Mutation setHighlightedNode:', id);
       state.highlightedNode = id;
       saveState(state);
     },

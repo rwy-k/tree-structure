@@ -10,7 +10,7 @@
         </div>
         <div v-else-if="data.leaf">
             <CollapsibleGroup :title="data._name" :id="data._nodeId" :is-open="openedNodes.includes(data._nodeId)" @toggle="toggleNode(data._nodeId)" @select="addToSelected(data)">
-                <div v-for="item in data.leaf" :key="item._nodeId" @click="addToSelected(item)" class="leaf-item">{{item._name}}</div>
+                <LeafItem v-for="item in data.leaf" :key="item._nodeId" :title="item._name" :id="item._nodeId" @click="addToSelected(item)" />
             </CollapsibleGroup>
         </div>
     </div>
@@ -19,13 +19,15 @@
 
 <script lang="ts">
 import CollapsibleGroup from './CollapsibleGroup.vue';
+import LeafItem from './LeafItem.vue';
 import store from '../store/tree';
 import type { Node } from '../types/tree';
 
 export default defineComponent({
   name: 'TreeStructure',
   components: {
-    CollapsibleGroup
+    CollapsibleGroup,
+    LeafItem
   },
   props: {
     data: {
@@ -47,6 +49,7 @@ export default defineComponent({
     }
 
     const addToSelected = (node: Node) => {
+      console.log('addToSelected', node)
       store.commit('addSelected', node)
     }
     return {
@@ -58,8 +61,3 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-.leaf-item {
-    cursor: pointer;
-}
-</style>

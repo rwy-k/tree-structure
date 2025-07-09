@@ -35,8 +35,7 @@ export default defineComponent({
   },
   emits: ['select', 'toggle'],
   setup(props, { emit }) {
-    const isHighlighted = computed(() => { 
-      return store.state.highlightedNode === props.id})
+    const isHighlighted = computed(() => store.state.highlightedNode === props.id)
 
     const toggle = () => {
       emit('toggle');
