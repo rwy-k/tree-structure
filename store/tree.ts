@@ -3,7 +3,9 @@ import test from '../public/8096720258560649974test.json';
 import type { State, Node } from '../types/tree';
 
 const saveState = (state: State) => {
-  localStorage.setItem('tree-state', JSON.stringify(state));
+  if (import.meta.client) {
+    localStorage.setItem('tree-state', JSON.stringify(state));
+  }
 }
 
 const store = createStore<State>({
