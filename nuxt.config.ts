@@ -1,12 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: false,
-  modules: ['@nuxt/content', '@nuxt/eslint', 'nuxt3-vuex-module'],
+  modules: ['nuxt3-vuex-module'],
   nitro: {
     preset: 'github_pages'
   },
   app: {
     baseURL: '/tree-structure/',
+    buildAssetsDir: '/tree-structure/_nuxt/',
     head: {
       link: [
         {
