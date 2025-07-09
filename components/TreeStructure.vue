@@ -49,7 +49,6 @@ export default defineComponent({
     }
 
     const addToSelected = (node: Node) => {
-      console.log('addToSelected', node)
       store.commit('addSelected', node)
     }
     return {
